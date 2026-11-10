@@ -226,8 +226,6 @@ overrides:
 
 packageExtensionsChecksum: sha256-HvE2tpjtVmkeRQLKlKfzfhNNPprtx2LC//uPw9mBzCw=
 
-pnpmfileChecksum: sha256-T1Cg+yzSxNWlqZCbUUs+yD3UM5zVtzm1Map/HqxItTM=
-
 patchedDependencies:
   history@4.10.1: 59f0d46e6f153d50eca0dd02e201978d26ff20d01917acd8ba8e7769d585b15d
   react-calendar@6.0.1: 2d8f851119870b6f0b94fdbbec3f07042cab7166e1a9a93275c449a6e47a0912
@@ -1875,7 +1873,7 @@ importers:
         version: 26.4.2(@typescript/typescript6@6.0.2)
       i18next-browser-languagedetector:
         specifier: ^8.0.0
-        version: 8.2.1
+        version: 8.3.0
       i18next-pseudo:
         specifier: ^2.2.1
         version: 2.2.1
@@ -10530,8 +10528,8 @@ packages:
   hyphenate-style-name@1.0.4:
     resolution: {integrity: sha512-ygGZLjmXfPHj+ZWh6LwbC37l43MhfztxetbFCoYTM2VjkIUpeHgSNn7QIyVFj7YQ1Wl9Cbw5sholVJPzWvC2MQ==}
 
-  i18next-browser-languagedetector@8.2.1:
-    resolution: {integrity: sha512-bZg8+4bdmaOiApD7N7BPT9W8MLZG+nPTOFlLiJiT8uzKXFjhxw4v2ierCXOwB5sFDMtuA5G4kgYZ0AznZxQ/cw==}
+  i18next-browser-languagedetector@8.3.0:
+    resolution: {integrity: sha512-t7FtF+VyQ+XSy+GI1O9TXWsMzP4U2u0m27yxJcCbG4LaAbTQa3CXFXgG3LvRivS+ZoYah8yPv5NhMl+Wg6I8Fg==}
 
   i18next-cli@1.58.0:
     resolution: {integrity: sha512-S5Nm6fE/HZzbuC5g8i2JQGq2CCVw7uSpDomY+PpqIglslEuQpje1rQ5r97ZDBdJebUZ4E5v7wf9FRLfGXDGjtQ==}
@@ -23942,7 +23940,7 @@ snapshots:
 
   hyphenate-style-name@1.0.4: {}
 
-  i18next-browser-languagedetector@8.2.1:
+  i18next-browser-languagedetector@8.3.0:
     dependencies:
       '@babel/runtime': 7.29.7
 
