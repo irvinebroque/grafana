@@ -63,11 +63,30 @@ The plugin is unsigned. This installation method requires a self-managed instanc
 All requests to Cloudflare run through the Grafana plugin backend. Grafana encrypts the saved API token in its database.
 
 1. Create a Cloudflare API token with **Account Analytics Read** for the account you want to query. Refer to [Cloudflare SQL API setup](https://developers.cloudflare.com/analytics/sql-api/get-started/).
-1. Add the read permissions required by any other APIs and products you use. GraphQL zone analytics, Workers observability, and account or zone browsing can require additional permissions.
+1. Add the permissions for the query languages, datasets, and resource selectors you use, as described below.
 1. Scope the token to the accounts and zones you want the data source to access.
 1. Copy your account ID from the Cloudflare dashboard. If you plan to query zone data, copy the zone ID as well. Refer to [Find account and zone IDs](https://developers.cloudflare.com/fundamentals/account/find-account-and-zone-ids/).
 
 Account and zone IDs are 32-character lowercase hexadecimal identifiers. Query-level account or zone overrides use the same saved token, so the token must have permission for each selected resource.
+
+### Select token permissions
+
+Start with **Account > Account Analytics > Read**. Add permissions according to the features you use.
+
+| Feature                              | Permission                                           | When to use it                                                                                                                                    |
+| ------------------------------------ | ---------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------- |
+| SQL catalog and connection test      | **Account > Account Analytics > Read**               | Required for dataset discovery and **Save & test**. GraphQL account analytics and the original Analytics Engine SQL API also use this permission. |
+| Account selector                     | **Account > Account Settings > Read**                | Optional account metadata access for **Browse accounts**. You can enter an account ID directly instead.                                           |
+| Zone selector                        | **Zone > Zone > Read**                               | Required for **Browse zones**. You can enter a zone ID directly instead. This permission doesn't grant analytics access.                          |
+| **Workers telemetry** query language | **Workers Observability Write** (account permission) | Required by the telemetry query endpoint according to its API reference. Add this permission only if you use that query language.                 |
+
+For the permission definitions, refer to [Cloudflare API token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/). For the zone selector requirement, refer to [List zones](https://developers.cloudflare.com/api/resources/zones/methods/list/).
+
+The [Workers telemetry query endpoint](https://developers.cloudflare.com/api/resources/workers/subresources/observability/subresources/telemetry/methods/query/) currently lists **Workers Observability Write**, rather than **Workers Observability Read**, as its accepted permission. The Workers logs, Containers logs, and trace examples use the SQL API. Using those examples doesn't by itself require the telemetry permission.
+
+SQL datasets and fields can require additional product permissions. Add the permissions required by the data you query. For zone-scoped SQL queries, Cloudflare accepts **Zone > Analytics > Read** for the selected zones or **Account Analytics Read** for their owning account. Retain **Account Analytics Read** for the account-scoped catalog and connection test.
+
+The connection test doesn't verify every dataset or API. After saving, run a query for each feature you intend to use. Permissions don't replace product enablement, plan access, or data retention.
 
 ## Add the data source
 

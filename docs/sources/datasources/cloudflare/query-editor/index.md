@@ -189,6 +189,8 @@ To query an Analytics Engine dataset through the unified API instead, select **S
 
 Select **Workers telemetry** to run JSON requests from [Workers Query Builder](https://developers.cloudflare.com/workers/observability/query-builder/).
 
+This query language uses an endpoint that currently requires **Workers Observability Write**. The SQL-backed log and trace examples use a different endpoint. For permission details, refer to [Select token permissions](https://grafana.com/docs/grafana/<GRAFANA_VERSION>/datasources/cloudflare/configure/#select-token-permissions).
+
 The following request retrieves Worker log events:
 
 ```json

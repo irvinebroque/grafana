@@ -36,15 +36,16 @@ Review the Grafana server logs for plugin loading errors after restarting.
 
 Authentication failures can affect connection tests, dataset discovery, queries, or resource browsing separately.
 
-| Symptom                                                   | Solution                                                                                                                             |
-| --------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------ |
-| **Save & test** asks for a default account ID.            | Set **Default account ID** to the account's 32-character lowercase hexadecimal ID.                                                   |
-| Requests return `401` or `403`.                           | Verify that the token is valid, hasn't expired or been revoked, and includes the required read permissions and resource scope.       |
-| The SQL catalog test succeeds, but a product query fails. | Verify the product's additional permissions, plan availability, and dataset access. The connection test doesn't query every product. |
-| **Browse accounts** or **Browse zones** fails.            | Add the relevant resource-listing permissions, or enter an authorized account or zone ID directly.                                   |
-| A query override returns a permission error.              | Confirm the saved token has access to the query's account or zone, rather than only the configured default.                          |
+| Symptom                                                   | Solution                                                                                                                                                                                                              |
+| --------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Save & test** asks for a default account ID.            | Set **Default account ID** to the account's 32-character lowercase hexadecimal ID.                                                                                                                                    |
+| Requests return `401` or `403`.                           | Verify that the token is valid, hasn't expired or been revoked, and includes the required permissions and resource scope.                                                                                             |
+| The SQL catalog test succeeds, but a product query fails. | Verify the product's additional permissions, plan availability, and dataset access. The connection test doesn't query every product.                                                                                  |
+| **Workers telemetry** fails while SQL queries work.       | The telemetry query endpoint currently requires **Workers Observability Write**. Add it only if you use this query language. **Workers Observability Read** isn't listed as an accepted permission for this endpoint. |
+| **Browse accounts** or **Browse zones** fails.            | Add the relevant resource-listing permissions, or enter an authorized account or zone ID directly.                                                                                                                    |
+| A query override returns a permission error.              | Confirm the saved token has access to the query's account or zone, rather than only the configured default.                                                                                                           |
 
-For token setup, refer to [Cloudflare SQL API setup](https://developers.cloudflare.com/analytics/sql-api/get-started/) and the documentation for the API you're querying.
+For token setup, refer to [Select token permissions](https://grafana.com/docs/grafana/<GRAFANA_VERSION>/datasources/cloudflare/configure/#select-token-permissions) and the documentation for the API you're querying.
 
 ## Datasets or fields are missing
 
